@@ -24,15 +24,14 @@ public class ProductServiceImpl implements ProductService {
         var event = new ProductCreatedEvent(
                 productId, createProductDto.name(), createProductDto.price(), createProductDto.quantity());
 
+        log.info("Publishing product created event: {}", event);
+
         var resultCompletableFuture = kafkaTemplate.send(KafkaConstants.PRODUCTS_CREATED_TOPIC, productId, event);
         resultCompletableFuture.whenComplete((result, exception) -> {
             if (exception != null) {
                 log.error("Error occurred while sending product created event", exception);
-            } else {
-                log.info("Product created event sent successfully: {}", result.getRecordMetadata());
             }
         });
-//        resultCompletableFuture.join(); // wait for the result to complete in a blocking way
 
         return productId;
     }
