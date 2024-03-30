@@ -1,4 +1,4 @@
-package com.azilzor.ProductsMicroservice.config;
+package com.azilzor.productsmicroservice.config;
 
 import org.apache.kafka.clients.admin.NewTopic;
 import org.springframework.context.annotation.Bean;

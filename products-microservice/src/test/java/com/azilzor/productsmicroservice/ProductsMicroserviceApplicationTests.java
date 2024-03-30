@@ -1,4 +1,4 @@
-package com.azilzor.ProductsMicroservice;
+package com.azilzor.productsmicroservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
