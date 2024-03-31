@@ -1,10 +1,7 @@
 package com.azilzor.productsmicroservice.controller;
 
-import com.azilzor.productsmicroservice.dto.CreateProductDto;
-import com.azilzor.productsmicroservice.exception.ErrorMessage;
-import com.azilzor.productsmicroservice.service.ProductService;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.log4j.Log4j2;
+import java.time.LocalDateTime;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,7 +9,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.time.LocalDateTime;
+import com.azilzor.productsmicroservice.dto.CreateProductDto;
+import com.azilzor.productsmicroservice.exception.ErrorMessage;
+import com.azilzor.productsmicroservice.service.ProductService;
+
+import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 
 @RestController
 @RequestMapping("/api/v1/products")

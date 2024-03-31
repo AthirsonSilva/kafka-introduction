@@ -1,8 +1,7 @@
 package com.azilzor.productsmicroservice.config;
 
-import java.util.HashMap;
-import java.util.Map;
-
+import com.azilzor.productsmicroservice.kafka.KafkaConstants;
+import com.azilzor.productsmicroservice.kafka.ProductCreatedEvent;
 import org.apache.kafka.clients.admin.NewTopic;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.springframework.beans.factory.annotation.Value;
@@ -13,8 +12,8 @@ import org.springframework.kafka.core.DefaultKafkaProducerFactory;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.core.ProducerFactory;
 
-import com.azilzor.productsmicroservice.kafka.KafkaConstants;
-import com.azilzor.productsmicroservice.kafka.ProductCreatedEvent;
+import java.util.HashMap;
+import java.util.Map;
 
 @Configuration
 public class KafkaConfig {
@@ -40,7 +39,13 @@ public class KafkaConfig {
     @Value("${spring.kafka.producer.properties.request.timeout.ms}")
     private String requestTimeout;
 
-    Map<String, Object> producerConfigs() {
+    @Value("${spring.kafka.producer.properties.max.in.flight.requests.per.connection}")
+    private String maxInFlightRequestsPerConnection;
+
+    @Value("${spring.kafka.producer.properties.enable.idempotence}")
+    private String enableIdempotence;
+
+    private Map<String, Object> producerConfigs() {
         Map<String, Object> config = new HashMap<>();
 
         config.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers);
@@ -50,6 +55,8 @@ public class KafkaConfig {
         config.put(ProducerConfig.DELIVERY_TIMEOUT_MS_CONFIG, deliveryTimeout);
         config.put(ProducerConfig.LINGER_MS_CONFIG, linger);
         config.put(ProducerConfig.REQUEST_TIMEOUT_MS_CONFIG, requestTimeout);
+        config.put(ProducerConfig.ENABLE_IDEMPOTENCE_CONFIG, enableIdempotence);
+        config.put(ProducerConfig.MAX_IN_FLIGHT_REQUESTS_PER_CONNECTION, maxInFlightRequestsPerConnection);
 
         return config;
     }
