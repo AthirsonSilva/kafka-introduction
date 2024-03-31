@@ -1,17 +1,15 @@
 package com.azilzor.productsmicroservice.service.impl;
 
-import java.util.UUID;
-
+import com.azilzor.productsmicroservice.dto.CreateProductDto;
+import com.azilzor.productsmicroservice.kafka.KafkaConstants;
+import com.azilzor.productsmicroservice.service.ProductService;
+import com.coredomain.ProductCreatedEvent;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
-import com.azilzor.productsmicroservice.dto.CreateProductDto;
-import com.azilzor.productsmicroservice.kafka.KafkaConstants;
-import com.azilzor.productsmicroservice.kafka.ProductCreatedEvent;
-import com.azilzor.productsmicroservice.service.ProductService;
-
-import lombok.RequiredArgsConstructor;
-import lombok.extern.log4j.Log4j2;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor

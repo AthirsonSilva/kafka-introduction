@@ -1,7 +1,7 @@
 package com.azilzor.productsmicroservice.config;
 
 import com.azilzor.productsmicroservice.kafka.KafkaConstants;
-import com.azilzor.productsmicroservice.kafka.ProductCreatedEvent;
+import com.coredomain.ProductCreatedEvent;
 import org.apache.kafka.clients.admin.NewTopic;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.springframework.beans.factory.annotation.Value;
