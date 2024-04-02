@@ -14,7 +14,7 @@ import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestTemplate;
 
 @Component
-@KafkaListener(topics = "product-created-events-topic")
+@KafkaListener(topics = "product-created-topic")
 @Log4j2
 public class ProductCreatedEventHandler {
 
